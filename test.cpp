@@ -1,14 +1,25 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-int main()
-{
-    vector<string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
+int main() {
+    string str;
+    map<string, int> count;
+    getline(cin, str);
 
-    for (const string& word : msg)
-    {
-        cout << word << " ";
+    string temp = "";
+    for (int i = 0; str[i]; i++) {
+        if (str[i] == ' ') {
+            count[temp] ++;
+            temp = "";
+            continue;
+        }
+
+        temp += str[i];
     }
-    cout << endl;
+
+    count[temp] ++;
+
+    for (auto it = count.begin(); it != count.end(); it++) {
+        cout << it->first << ' ' << it->second << endl;
+    }
 }
