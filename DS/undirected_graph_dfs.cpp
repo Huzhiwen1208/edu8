@@ -4,7 +4,7 @@ using namespace std;
 #define INF 9999999
 
 int vertexs, edges;
-int graph[15][15];  // 有向图邻接矩阵
+int graph[15][15];  // 无向图邻接矩阵
 bool visited[15]; // 顶点访问标记位
 
 // 从该图的vertex顶点出发开始遍历，如果是连通的，则只需要执行一次。
@@ -21,6 +21,10 @@ void dfs(int vertex) {
 
 // 遍历图
 void DFS() {
+    for (int i = 0; i < 15; i++) {
+        visited[i] = false;
+    }
+
     for (int i = 1; i <= vertexs; i++) {
         if (visited[i] == false) {
             visited[i] = true;
@@ -40,12 +44,14 @@ int main() {
     for (int i = 0; i < edges; i++) {
         cin >> vertex_start >> vertex_end >> distance;
         graph[vertex_start][vertex_end] = distance;
+        graph[vertex_end][vertex_start] = distance;
     }
 
     DFS();
 
     return  0;
 }
+
 /* 我们的输入是：
     6 8
     1 3 10
