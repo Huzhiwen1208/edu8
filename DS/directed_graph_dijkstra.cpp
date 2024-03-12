@@ -27,10 +27,6 @@ void Dijkstra(int vertex) {
 
     // 2. 寻找一个距离当前顶点最短的相邻顶点
     while (1) {
-        printf("vertex: %d\n", vertex);
-        for (int i = 1; i <= vertexs; i++)
-            cout << distance[i] << ' ';
-        cout << endl;
         int min = INF;
         int v;
         for (int i = 1; i <= vertexs; i++) {
@@ -39,8 +35,6 @@ void Dijkstra(int vertex) {
                 v = i;
             }
         }
-
-        printf("找到下一个顶点：[%d, %d]\n", vertex, v);
 
         if (min == INF) break; //未找到，程序退出
         // 3. 找到了，入集合并更新
